@@ -1,0 +1,30 @@
+name: Build My Banime40
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Source Code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Run VIAL Build
+      uses: qmk/qmk-action@v4
+      with:
+        palette: no
+        account: vial-kb
+        keyboard: sporewoh/banime40
+        keymap: default
+
+    - name: Upload Result File
+      uses: actions/upload-artifact@v4
+      with:
+        name: banime40_gaming_firmware
+        path: |
+          *.hex
+          *.bin
+          *.uf2
