@@ -12,10 +12,10 @@ jobs:
       with:
         submodules: recursive
 
-    - name: Install Compiler Toolchain
+    - name: Install All Dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi
+        ./util/qmk_install.sh
 
     - name: Build Only Banime40
       run: |
