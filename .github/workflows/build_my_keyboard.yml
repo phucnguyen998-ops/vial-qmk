@@ -12,13 +12,10 @@ jobs:
       with:
         submodules: recursive
 
-    - name: Run VIAL Build
-      uses: qmk/qmk-action@v4
+    - name: Build VIAL Firmware
+      uses: docker://vialkb/vial-qmk-build:v0.2
       with:
-        palette: no
-        account: vial-kb
-        keyboard: sporewoh/banime40
-        keymap: default
+        args: make sporewoh/banime40:default
 
     - name: Upload Result File
       uses: actions/upload-artifact@v4
